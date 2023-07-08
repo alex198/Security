@@ -1,0 +1,6 @@
+:root{
+    --color_turquoise: #2e9ca8;
+}
+.edit_btn{
+    background-color:var(--color_turquoise);
+}

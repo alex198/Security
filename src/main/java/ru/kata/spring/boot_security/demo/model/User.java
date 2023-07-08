@@ -22,10 +22,10 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "age")
@@ -48,10 +48,10 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+//    public User(String username, String password) {
+//        this.username = username;
+//        this.password = password;
+//    }
 
     public User(String firstName, String lastName, Integer age, String username, String password) {
         this.firstName = firstName;

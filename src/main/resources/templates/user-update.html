@@ -1,7 +1,9 @@
+<!--
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="https://www.thymeleaf.org" >
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <title>User update</title>
 </head>
 <body>
@@ -32,7 +34,7 @@
     <br/>
     <br/>
     <label>Roles</label>
-    <select id="role-select" required class="form-control" th:field="*{roles}" multiple="multiple" >
+    <select id="role-select" required class="form-control" th:field="*{roles}" multiple="multiple">
         <option th:each="e : ${addRoles}"
                 th:field="*{roles}"
                 th:value="${e.id}"
@@ -46,8 +48,11 @@
 <div>
     <br>
     <form th:action="@{/logout}" th:method="POST">
-        <input type="submit" value="Logout" />
+        <input type="submit" value="Logout"/>
     </form>
 </div>
+<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+-->

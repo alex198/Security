@@ -12,7 +12,7 @@ import java.security.Principal;
 
 
 @Controller
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UsersController {
 
     private final UserService userService;
@@ -22,7 +22,12 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/")
+    public String redirect() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/user")
     public String showUser(Model model, Principal principal) {
         User user = userService.findUserByUsername(principal.getName());
         model.addAttribute("title", "Данные пользователя");
