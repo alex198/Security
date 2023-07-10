@@ -157,15 +157,16 @@
                                                                                    th:name="username"
                                                                                    th:value="${user.username}"
                                                                                    id="usernameEdit"
-                                                                                   placeholder="email">
+                                                                                   placeholder="email" required>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label class="col-form-label"
                                                                                    for="passwordEdit"><strong>Password</strong></label>
                                                                             <input class="form-control" type="password"
                                                                                    th:name="password"
+                                                                                   th:value="${user.password}"
                                                                                    id="passwordEdit"
-                                                                                   placeholder="enter password">
+                                                                                   placeholder="enter password" required>
                                                                         </div>
                                                                         <div class="mb-3">
                                                                             <label class="col-form-label"><strong>Role</strong></label>
@@ -342,7 +343,7 @@
                                                            th:name="username"
                                                            th:value="${addUser.username}"
                                                            id="usernameAdd"
-                                                           placeholder="email">
+                                                           placeholder="email" required>
                                                 </div>
                                                 <div class="mb-1">
                                                     <label class="col-form-label"
@@ -351,7 +352,7 @@
                                                            th:name="password"
                                                            th:value="${addUser.password}"
                                                            id="passwordAdd"
-                                                           placeholder="password">
+                                                           placeholder="password" required>
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="col-form-label"><strong>Role</strong></label>
