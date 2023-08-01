@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -10,13 +10,10 @@
 <div class="container">
     <div class="row accordion-header bg-dark">
         <div class="col align-content-start text-white">
-            <span th:text="${user.getUsername()}" class="h6"></span>
+            <span id="user-email" class="h6"></span>
             <a> with roles: </a>
-            <a>
-                <th:block th:each="role: ${user.roles}">
-                    <a th:text="${role.role}"></a>
-                </th:block>
-            </a>
+            <span id="user-roles">
+            </span>
         </div>
         <div class="col text-end">
             <form th:action="@{/logout}" th:method="POST">
@@ -26,7 +23,7 @@
     </div>
     <div class="row my-3">
         <div class="col-2 nav nav-pills flex-column">
-            <b class="nav-link active pill" type="button">User</b>
+            <b class="nav-link active pill">User</b>
         </div>
         <div class="col-10 bg-light vh-100">
             <h2>User information-page</h2>
@@ -46,19 +43,7 @@
                         <th>Role</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td th:text="${user.getId()}"/>
-                        <td th:text="${user.getFirstName()}"/>
-                        <td th:text="${user.getLastName()}"/>
-                        <td th:text="${user.getAge()}"/>
-                        <td th:text="${user.getUsername()}"/>
-                        <td>
-                            <th:block th:each="role: ${user.roles}">
-                                <a th:text="${role.role}"></a>
-                            </th:block>
-                        </td>
-                    </tr>
+                    <tbody id="user-table">
                     </tbody>
                 </table>
                 </div>
@@ -71,5 +56,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="/js/userPage.js">
+</script>
 </body>
 </html>

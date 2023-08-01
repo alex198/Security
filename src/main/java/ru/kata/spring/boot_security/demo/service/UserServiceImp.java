@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.service;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -34,13 +35,9 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void saveUser(User user) {
-        String pass = userRepository.findByUsername(user.getUsername()).getPassword();
-        if(pass.equals(user.getPassword())) {
-
-        } else {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+
     }
 
     @Transactional
@@ -52,13 +49,21 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void editeUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        String pass = userRepository.findByUsername(user.getUsername()).getPassword();
+        if(!pass.equals(user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userRepository.save(user);
     }
 
     @Override
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 }

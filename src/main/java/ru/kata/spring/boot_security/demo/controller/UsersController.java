@@ -12,28 +12,27 @@ import java.security.Principal;
 
 
 @Controller
-//@RequestMapping("/user")
 public class UsersController {
 
-    private final UserService userService;
-
-    @Autowired
-    public UsersController(UserService userService) {
-        this.userService = userService;
-    }
+//    private final UserService userService;
+//
+//    @Autowired
+//    public UsersController(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @GetMapping("/")
     public String redirect() {
         return "redirect:/login";
     }
 
-    @GetMapping("/user")
-    public String showUser(Model model, Principal principal) {
-        User user = userService.findUserByUsername(principal.getName());
-        model.addAttribute("title", "Данные пользователя");
-        model.addAttribute("user", user);
-        return "user";
-    }
+//    @GetMapping("/user")
+//    public String showUser(Model model, Principal principal) {
+//        User user = userService.findUserByUsername(principal.getName());
+//        model.addAttribute("title", "Данные пользователя");
+//        model.addAttribute("user", user);
+//        return "user";
+//    }
 
     @GetMapping(value = "login")
     public String loginPage() {

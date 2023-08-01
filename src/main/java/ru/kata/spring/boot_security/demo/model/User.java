@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +36,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     //создаем объединенную таблицу юзеров и ролей
     @JoinTable(
             name = "users_roles",
@@ -47,11 +46,6 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     public User() {}
-
-//    public User(String username, String password) {
-//        this.username = username;
-//        this.password = password;
-//    }
 
     public User(String firstName, String lastName, Integer age, String username, String password) {
         this.firstName = firstName;

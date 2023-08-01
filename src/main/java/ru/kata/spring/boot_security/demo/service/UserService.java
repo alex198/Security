@@ -16,4 +16,6 @@ public interface UserService {
     void editeUser(User user);
 
     User findUserByUsername(String username);
+
+    User getCurrentUser();
 }
