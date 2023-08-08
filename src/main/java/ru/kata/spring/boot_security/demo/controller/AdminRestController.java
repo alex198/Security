@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.service.RoleServiceImp;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class AdminRestController {
     private final UserService userService;
 
     @Autowired
-    public AdminRestController(UserService userService, RoleServiceImp roleServiceImp) {
+    public AdminRestController(UserService userService) {
         this.userService = userService;
     }
 

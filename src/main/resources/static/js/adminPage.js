@@ -120,7 +120,6 @@ async function loadDeleteForm(id) {
     const  urlDeleteById = 'api/admin/' + id;
     let userDeletePage = await fetch(urlDeleteById);
     if (userDeletePage.ok) {
-        // let userData =
             await userDeletePage.json().then(user => {
                 id_delete.value = `${user.id}`;
                 name_delete.value = `${user.firstName}`;
@@ -157,7 +156,6 @@ form_addUser.addEventListener('submit', addUser);
 
 async function addUser(event) {
     event.preventDefault();
-    // const url = '/api/admin';
     let rolesList = [];
     for (let i = 0; i < role_addUser.length; i++) {
         rolesList.push({
@@ -184,5 +182,4 @@ async function addUser(event) {
         form_addUser.reset();
         getAdminPage();
     });
-
 }

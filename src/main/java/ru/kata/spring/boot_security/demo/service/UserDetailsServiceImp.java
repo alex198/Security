@@ -11,8 +11,6 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 @Service
 public class UserDetailsServiceImp implements UserDetailsService {
 
-//    private final UserDAO userDAO;
-
     private UserRepository userRepository;
 
     @Autowired

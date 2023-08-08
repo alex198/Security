@@ -37,7 +37,6 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    //создаем объединенную таблицу юзеров и ролей
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

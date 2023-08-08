@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private final UserDetailsService userDetailsService;
+    private static final String ADMIN = "ADMIN";
+    private static final String USER = "USER";
 
     @Autowired
     public WebSecurityConfig(SuccessUserHandler successUserHandler, UserDetailsService userDetailsService) {
@@ -37,10 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/login**", "/error").permitAll()
-                .antMatchers("/admin**").hasAnyRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/api/admin").hasRole("ADMIN")
-                .antMatchers("/api/user").hasRole("USER")
+                .antMatchers("/admin**").hasAnyRole(ADMIN)
+                .antMatchers("/user**").hasAnyRole(USER, ADMIN)
+                .antMatchers("/api/admin").hasRole(ADMIN)
+                .antMatchers("/api/user").hasRole(USER)
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,13 +55,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-    //настраиваем аутентификацию
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder());
     }
 
-    //указываем алгоритм шифрования
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
